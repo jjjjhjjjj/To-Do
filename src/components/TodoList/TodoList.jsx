@@ -2,7 +2,7 @@ import { useState } from "react";
 import InputTodo from "../InputTodo/InputTodo";
 import Todo from "../Todo/Todo";
 
-export default function TodoList() {
+export default function TodoList({ filter }) {
   const [todos, setTodos] = useState([
     { id: 1, text: "강의 보기", status: "Completed" },
     { id: 2, text: "카페가기", status: "Active" },
@@ -24,10 +24,18 @@ export default function TodoList() {
     setTodos((todos) => todos.filter((todo) => todo.id !== todoId));
   };
 
+  const filtered = () => {
+    if (filter === "All") {
+      return todos;
+    }
+
+    return todos.filter((todo) => todo.status === filter);
+  };
+
   return (
     <>
       <ul>
-        {todos.map((todo) => (
+        {filtered().map((todo) => (
           <Todo
             key={todo.id}
             todo={todo}
