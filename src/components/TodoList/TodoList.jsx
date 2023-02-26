@@ -1,4 +1,5 @@
 import { useState } from "react";
+import InputTodo from "../InputTodo/InputTodo";
 import Todo from "../Todo/Todo";
 
 export default function TodoList() {
@@ -7,6 +8,13 @@ export default function TodoList() {
     { id: 2, text: "카페가기", status: "Active" },
     { id: 3, text: "청소하기", status: "Active" },
   ]);
+
+  const handleAddTodo = (text) => {
+    setTodos((todos) => [
+      ...todos,
+      { id: crypto.randomUUID(), text, status: "Active" },
+    ]);
+  };
 
   const handleUpdateTodo = (todo) => {
     setTodos((todos) => todos.map((t) => (t.id === todo.id ? todo : t)));
@@ -17,15 +25,18 @@ export default function TodoList() {
   };
 
   return (
-    <ul>
-      {todos.map((todo) => (
-        <Todo
-          key={todo.id}
-          todo={todo}
-          onUpdate={handleUpdateTodo}
-          onDelete={handleDeleteTodo}
-        />
-      ))}
-    </ul>
+    <>
+      <ul>
+        {todos.map((todo) => (
+          <Todo
+            key={todo.id}
+            todo={todo}
+            onUpdate={handleUpdateTodo}
+            onDelete={handleDeleteTodo}
+          />
+        ))}
+      </ul>
+      <InputTodo onAdd={handleAddTodo} />
+    </>
   );
 }
