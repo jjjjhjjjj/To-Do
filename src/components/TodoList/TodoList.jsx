@@ -8,6 +8,10 @@ export default function TodoList() {
     { id: 3, text: "청소하기", status: "Active" },
   ]);
 
+  const handleUpdateTodo = (todo) => {
+    setTodos((todos) => todos.map((t) => (t.id === todo.id ? todo : t)));
+  };
+
   const handleDeleteTodo = (todoId) => {
     setTodos((todos) => todos.filter((todo) => todo.id !== todoId));
   };
@@ -15,7 +19,12 @@ export default function TodoList() {
   return (
     <ul>
       {todos.map((todo) => (
-        <Todo key={todo.id} todo={todo} onDelete={handleDeleteTodo} />
+        <Todo
+          key={todo.id}
+          todo={todo}
+          onUpdate={handleUpdateTodo}
+          onDelete={handleDeleteTodo}
+        />
       ))}
     </ul>
   );
