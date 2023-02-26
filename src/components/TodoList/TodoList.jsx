@@ -7,10 +7,15 @@ export default function TodoList() {
     { id: 2, text: "카페가기", status: "Active" },
     { id: 3, text: "청소하기", status: "Active" },
   ]);
+
+  const handleDeleteTodo = (todoId) => {
+    setTodos((todos) => todos.filter((todo) => todo.id !== todoId));
+  };
+
   return (
     <ul>
       {todos.map((todo) => (
-        <Todo key={todo.id} todo={todo} />
+        <Todo key={todo.id} todo={todo} onDelete={handleDeleteTodo} />
       ))}
     </ul>
   );
