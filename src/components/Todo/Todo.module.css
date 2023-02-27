@@ -1,0 +1,27 @@
+.todo {
+  padding: 0.3em 0em;
+  display: flex;
+}
+
+.checkbox {
+  width: 1.5em;
+  height: 1.5em;
+  cursor: pointer;
+}
+
+.text {
+  flex: 1;
+  font-size: 1.1em;
+  padding: 0 0.3em;
+}
+
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2em;
+}
+
+.button:hover {
+  transform: scale(1.1);
+}
