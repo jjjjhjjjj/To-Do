@@ -1,14 +1,14 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import InputTodo from "../InputTodo/InputTodo";
 import Todo from "../Todo/Todo";
 import styles from "./TodoList.module.css";
 
 export default function TodoList({ filter }) {
-  const [todos, setTodos] = useState([
-    { id: 1, text: "강의 보기", status: "Completed" },
-    { id: 2, text: "카페가기", status: "Active" },
-    { id: 3, text: "청소하기", status: "Active" },
-  ]);
+  const [todos, setTodos] = useState(getTodosFromLocalStorage());
+
+  useEffect(() => {
+    localStorage.setItem("todos", JSON.stringify(todos));
+  }, [todos]);
 
   const handleAddTodo = (text) => {
     setTodos((todos) => [
@@ -26,6 +26,9 @@ export default function TodoList({ filter }) {
   };
 
   const filtered = () => {
+    if (!todos) {
+      return [];
+    }
     if (filter === "All") {
       return todos;
     }
@@ -49,3 +52,8 @@ export default function TodoList({ filter }) {
     </>
   );
 }
+
+const getTodosFromLocalStorage = () => {
+  const todos = localStorage.getItem("todos");
+  return todos ? JSON.parse(todos) : [];
+};
