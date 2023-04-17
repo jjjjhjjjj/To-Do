@@ -1,8 +1,6 @@
 # Todo APP
 리액트를 이용한 할 일 웹 어플리케이션  
 
-- 사이트 링크: [TODO APP](https://jjjjhjjjj.github.io/Todo-App/)
-
 ## 사용한 기술
 - ![React Badge](https://img.shields.io/badge/REACT-61DAFB?style=flat-square&logo=react&logoColor=white) ![JavaScript Badge](https://img.shields.io/badge/JAVASCRIPT-F7DF1E?style=flat-square&logo=JavaScript&logoColor=white) ![CSS3 Badge](https://img.shields.io/badge/CSS3-1572B6?style=flat-square&logo=CSS3&logoColor=white)
 
